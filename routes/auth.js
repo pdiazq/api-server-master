@@ -16,6 +16,7 @@ const { config } = require('../config');
 // Basic strategy
 require('../utils/auth/strategies/basic');
 
+
 function authApi(app) {
   const router = express.Router();
   app.use('/api/auth', router);
@@ -90,7 +91,7 @@ function authApi(app) {
 
   router.post(
     '/sign-provider',
-    validationHandler(createProviderUserSchema),
+    //validationHandler(createProviderUserSchema),
     async function(req, res, next) {
       const { body } = req;
 

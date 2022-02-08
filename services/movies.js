@@ -22,6 +22,7 @@ class MoviesService {
   async getMoviesFilter( {body} ) {
     console.log (`SERVICIOS EN GET MOVIES ${JSON.stringify(body)}`)
     const movies = await this.mongoDB.getAllFilter(this.collection, body);
+    console.log ('movies', movies)
     return movies || [];
   }
 

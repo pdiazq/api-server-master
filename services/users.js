@@ -8,13 +8,14 @@ class UsersService {
   }
 
   async getUser({ email }) {
-    console.log (`prestando servicio de traida de datos`)
-    const [user] = await this.mongoDB.getAll(this.collection, { email });
+    console.log (`prestando servicio de traida de datos ${JSON.stringify( email )}`)
+    const [user] = await this.mongoDB.getAll(this.collection, { 
+      email });
     return user;
   }
 
   async getUserInfo(  {userId} ) {
-    console.log (`prestando servicio de traida de datos ${JSON.stringify( userId )}`)
+    console.log (`prestando servicio de traida de datos__ ${JSON.stringify( userId )}`)
     const user = await this.mongoDB.get(this.collection,  userId  );
     return user;
   }
@@ -48,11 +49,26 @@ class UsersService {
       name,
       email,
       password: hashedPassword,
-      movies
+      movies: []
     });
 
     return createUserId;
   }
+  
+  
+  async getOrCreateUser({ user }) {
+    const queriedUser = await this.getUser({ email: user.email });
+  
+    if (queriedUser) {
+      return queriedUser;
+    }
+  
+    await this.createUser({ user });
+    return await this.getUser({ email: user.email });
+  }
+
 }
+
+
 
 module.exports = UsersService;

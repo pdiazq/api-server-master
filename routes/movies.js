@@ -34,7 +34,7 @@ function moviesApi(app) {
       cacheResponse(res, FIVE_MINUTES_IN_SECONDS);
       const { body } = req;
       //const { tags } = req.query;
-      console.log(`MOVIES ROUTE GET ${JSON.stringify(body.title)}`)
+      console.log(`MOVIES ROUTE GET_ ${JSON.stringify(body)}`)
       //console.log(`MOVIES ROUTE GET ${JSON.stringify(tags)}`)
 
       try {
@@ -58,7 +58,7 @@ function moviesApi(app) {
       cacheResponse(res, FIVE_MINUTES_IN_SECONDS);
       const { body } = req;
       //const { tags } = req.query;
-      console.log(`MOVIES ROUTE GET ${JSON.stringify(body.title)}`)
+      console.log(`MOVIES ROUTE POST ${JSON.stringify(body.title)}`)
       //console.log(`MOVIES ROUTE GET ${JSON.stringify(tags)}`)
 
       try {
